@@ -1,5 +1,7 @@
 'use client'
 
+
+
 export default function Footer() {
   const scrollToSection = (sectionId: string) => {
     const element = document.getElementById(sectionId)
@@ -14,17 +16,17 @@ export default function Footer() {
         <div className="grid md:grid-cols-4 gap-8">
           {/* Brand */}
           <div className="md:col-span-2">
-            <h3 className="text-2xl font-bold text-white mb-4">Your Name</h3>
+            <h3 className="text-2xl font-bold text-white mb-4">Boonyawee Wasupornrujee</h3>
             <p className="text-gray-400 mb-6 max-w-md">
-              A passionate full-stack developer dedicated to creating innovative digital solutions 
-              and exceptional user experiences.
+            A motivated learner aiming to become a Cloud and DevOps Engineer
+            , constantly exploring new technologies to turn ideas into reliable solutions.
             </p>
             <div className="flex space-x-4">
               {[
-                { name: 'GitHub', icon: '🐙', url: '#' },
-                { name: 'LinkedIn', icon: '💼', url: '#' },
-                { name: 'Twitter', icon: '🐦', url: '#' },
-                { name: 'Instagram', icon: '📷', url: '#' }
+                { name: 'GitHub', icon: <i className="fa-brands fa-github"></i>, url: 'https://github.com/bbbbyw' },
+                { name: 'LinkedIn', icon: <i className="fa-brands fa-linkedin"></i>, url: 'https://www.linkedin.com/in/byw-%E0%B8%A7%E0%B8%AA%E0%B8%B8%E0%B8%9E%E0%B8%A3%E0%B8%A3%E0%B8%B8%E0%B8%88%E0%B8%B5-464998369/' },
+                { name: 'Facebook', icon: <i className="fa-brands fa-facebook"></i>, url: 'https://www.facebook.com/yokky.byw' },
+                { name: 'Instagram', icon: <i className="fa-brands fa-instagram"></i>, url: 'https://www.instagram.com/yokkk_bbb/' }
               ].map((social) => (
                 <a
                   key={social.name}
@@ -64,9 +66,8 @@ export default function Footer() {
           <div>
             <h4 className="text-white font-semibold mb-4">Contact</h4>
             <div className="space-y-2 text-gray-400">
-              <p>your.email@example.com</p>
-              <p>Your City, Country</p>
-              <p>Available for new opportunities</p>
+              <p>yok.byw@gmail.com</p>
+              <p>Searching for new opportunities and experience</p>
             </div>
           </div>
         </div>
@@ -74,10 +75,10 @@ export default function Footer() {
         {/* Bottom Bar */}
         <div className="border-t border-white/10 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center">
           <p className="text-gray-400 text-sm">
-            © {new Date().getFullYear()} Your Name. All rights reserved.
+            © {new Date().getFullYear()} BYW. All rights reserved.
           </p>
           <p className="text-gray-400 text-sm mt-4 md:mt-0">
-            Built with ❤️ using Next.js & Tailwind CSS
+            Built with Next.js & Tailwind CSS
           </p>
         </div>
       </div>

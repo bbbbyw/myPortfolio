@@ -1,15 +1,20 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
+import "@fortawesome/fontawesome-free/css/all.min.css";
 
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "Your Name - Full Stack Developer Portfolio",
-  description: "Professional portfolio showcasing web development projects, skills, and experience. Full stack developer specializing in React, Next.js, and modern web technologies.",
-  keywords: ["portfolio", "web developer", "full stack", "react", "next.js", "typescript"],
+  title: "Boonyawee Wasupornrujee's Portfolio",
+  description: "Professional portfolio showcasing projects, skills, and experience.",
+  keywords: ["portfolio", "software developer", "full stack", "react", "next.js", "typescript"],
   authors: [{ name: "Your Name" }],
-  viewport: "width=device-width, initial-scale=1",
+};
+
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
 };
 
 export default function RootLayout({

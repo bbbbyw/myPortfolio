@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react'
 
 export default function Hero() {
   const [currentText, setCurrentText] = useState(0)
-  const texts = ['Full Stack Developer', 'UI/UX Designer', 'Problem Solver', 'Creative Thinker']
+  const texts = ['Cloud & DevOps Enthusiast','Fast learner', 'Problem Solver', 'Creative Thinker']
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -21,51 +21,61 @@ export default function Hero() {
   }
 
   return (
-    <section id="hero" className="min-h-screen flex items-center justify-center relative overflow-hidden">
-      {/* Animated background */}
-      <div className="absolute inset-0 bg-gradient-to-br from-purple-600/20 via-blue-600/20 to-pink-600/20 animate-pulse"></div>
-      
-      <div className="relative z-10 text-center px-4 sm:px-6 lg:px-8">
-        <div className="max-w-4xl mx-auto">
-          <h1 className="text-4xl sm:text-6xl lg:text-7xl font-bold text-white mb-6">
-            Hi, I'm <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-400">Your Name</span>
+    <section id="hero" className="min-h-screen flex items-center justify-center relative overflow-hidden pt-16">
+      <div 
+        className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+        style={{
+          backgroundImage: "url('/BG-port.png')",
+        }}
+      ></div>
+
+      <div className="relative z-10 bg-white rounded-2xl sm:border-4 border-yellow-300 max-w-4xl w-full mx-4 sm:mx-8 px-4 sm:px-6 lg:px-12 py-6 sm:py-8 md:py-10 lg:py-6">
+        <div className="text-center">
+          <div className="w-32 h-32 sm:w-44 sm:h-44 md:w-48 md:h-48 lg:w-56 lg:h-56 bg-gray-200 rounded-full mx-auto mb-2 mt-2 flex items-center justify-center overflow-hidden border-2 sm:border-4 border-blue-300">
+            <img 
+              src="/profile.jpg" 
+              alt="Profile" 
+              className="w-full h-full object-cover rounded-full"
+            />
+          </div>
+          
+          <h1 className="text-xl sm:text-3xl lg:text-4xl font-bold text-gray-900 mb-1">
+            Hi, I'm <span className="text-transparent bg-clip-text gradient-text">Boonyawee</span>
           </h1>
           
-          <div className="h-16 sm:h-20 flex items-center justify-center mb-8">
-            <h2 className="text-xl sm:text-3xl lg:text-4xl text-gray-300 font-medium">
+          <div className="h-12 sm:h-16 flex items-center justify-center mb-1">
+            <h2 className="text-lg sm:text-xl lg:text-2xl text-gray-700 font-medium">
               I'm a{' '}
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-400 animate-pulse">
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-600 to-blue-600 animate-pulse">
                 {texts[currentText]}
               </span>
             </h2>
           </div>
           
-          <p className="text-lg sm:text-xl text-gray-400 mb-12 max-w-2xl mx-auto">
-            Passionate about creating beautiful, functional, and user-friendly web applications. 
-            Let's build something amazing together!
+          <p className="text-sm sm:text-base text-gray-600 max-w-xl mx-auto">
+            "Computer Engineering Student & Aspiring Cloud and DevOps Engineer"
+          </p>
+
+          <p className="text-sm sm:text-base text-gray-600 mb-4 max-w-xl mx-auto">
+             Building full-stack applications and intelligent systems with modern tools. Award-winning designer and passionate problem solver.
           </p>
           
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+          <div className="flex flex-col sm:flex-row gap-3 justify-center mb-2">
             <button
               onClick={() => scrollToSection('projects')}
-              className="px-8 py-4 bg-gradient-to-r from-purple-600 to-pink-600 text-white font-semibold rounded-lg hover:from-purple-700 hover:to-pink-700 transition-all duration-300 transform hover:scale-105 shadow-lg"
+              className="px-6 py-3 border-2 border-gray-900 text-gray-900 font-semibold rounded-lg hover:bg-blue-500 hover:border-blue-500 hover:text-white transition-all duration-300 transform hover:scale-105 flex items-center justify-center gap-2"
             >
               View My Work
             </button>
             <button
               onClick={() => scrollToSection('contact')}
-              className="px-8 py-4 border-2 border-white/30 text-white font-semibold rounded-lg hover:bg-white/10 transition-all duration-300 transform hover:scale-105"
+              className="px-6 py-3 border-2 border-gray-900 text-gray-900 font-semibold rounded-lg hover:bg-yellow-500 hover:border-yellow-500 hover:text-white transition-all duration-300 transform hover:scale-105 flex items-center justify-center gap-2"
             >
               Get In Touch
             </button>
           </div>
         </div>
       </div>
-      
-      {/* Floating elements */}
-      <div className="absolute top-20 left-10 w-20 h-20 bg-purple-500/20 rounded-full animate-bounce"></div>
-      <div className="absolute bottom-20 right-10 w-32 h-32 bg-pink-500/20 rounded-full animate-pulse"></div>
-      <div className="absolute top-1/2 left-20 w-16 h-16 bg-blue-500/20 rounded-full animate-spin"></div>
     </section>
   )
 } 
