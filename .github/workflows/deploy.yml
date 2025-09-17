@@ -56,6 +56,12 @@ jobs:
         env:
           S3_BUCKET: ${{ secrets.S3_BUCKET }}
         run: |
+          # Root HTML (e.g., index.html, 404.html)
+          aws s3 sync ./out s3://$S3_BUCKET \
+            --cache-control "public, max-age=0, must-revalidate" \
+            --exclude "*" \
+            --include "*.html"
+          # Nested HTML (e.g., /about/index.html)
           aws s3 sync ./out s3://$S3_BUCKET \
             --cache-control "public, max-age=0, must-revalidate" \
             --exclude "*" \
