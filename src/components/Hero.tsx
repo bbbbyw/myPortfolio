@@ -45,7 +45,7 @@ export default function Hero() {
           
           <div className="h-12 sm:h-16 flex items-center justify-center mb-1">
             <h2 className="text-lg sm:text-xl lg:text-2xl text-gray-700 font-medium">
-              I'm a{' '}
+              I'm a Test{' '}
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-600 to-blue-600 animate-pulse">
                 {texts[currentText]}
               </span>
