@@ -51,7 +51,7 @@ const projects: Project[] = [
   {
     id: 4,
     title: 'Portfolio Website (This site)',
-    description: 'A modern and responsive portfolio website showcasing my work, hosted on AWS S3 with Tailwind styling.',
+    description: 'A modern and responsive portfolio website showcasing my work, hosted on AWS S3 + CloudFront with Tailwind styling and CI/CD pipeline by AWS IAM and GitHub action.',
     image: '🌐',
     technologies: ['Next.js', 'Tailwind CSS', 'AWS S3'],
     demoVideoUrl: '',
