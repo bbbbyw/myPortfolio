@@ -65,7 +65,6 @@ export default function About() {
             </div>
           </div>
           
-          {/* Awards & Certificates Section */}
           <div className="relative mt-12">
             <div className="relative mb-6">
               <h3 className="text-2xl font-bold text-black text-center">Awards & Certificates</h3>
@@ -75,7 +74,7 @@ export default function About() {
               <div className="w-[320px] sm:w-[360px] bg-gradient-to-br from-yellow-400/20 to-orange-400/20 p-6 rounded-2xl border border-yellow-500/20 hover:border-yellow-400/40 transition-all duration-300 hover:scale-105">
                 <div className="w-full h-40 rounded-xl overflow-hidden mb-4 border border-yellow-500/30">
                   <img
-                    src="/awards/mu-gamification.jpg"
+                    src="/mu-pic.jpg"
                     alt="MU Gamification Hackathon Award"
                     className="w-full h-full object-cover"
                   />
@@ -84,13 +83,12 @@ export default function About() {
                 <p className="text-gray-400 text-sm leading-relaxed">Awarded for excellence in UX/UI design and innovative gamification concepts in a team-based competition.</p>
               </div>
               
-              {/* Award 2: University Certificate */}
               <div className="w-[320px] sm:w-[360px] bg-gradient-to-br from-blue-400/20 to-indigo-500/20 p-6 rounded-2xl border border-blue-500/20 hover:border-blue-400/40 transition-all duration-300 hover:scale-105">
                 <div className="w-full h-40 rounded-xl overflow-hidden mb-4 border border-blue-500/30">
                   <img
-                    src="/awards/outstanding-activities.jpg"
+                    src="/activity_cer.jpg"
                     alt="Outstanding Activities Award"
-                    className="w-full h-full object-cover"
+                    className="w-full h-full object-contain "
                   />
                 </div>
                 <h4 className="text-gray-700 font-semibold mb-3 text-lg">Outstanding Activities Award</h4>

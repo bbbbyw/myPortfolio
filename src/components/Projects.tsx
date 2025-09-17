@@ -1,16 +1,17 @@
 'use client'
 
-import { useState } from 'react'
+
+import { useState, type ReactNode } from 'react'
 
 interface Project {
   id: number
   title: string
-  description: string
+  description: ReactNode
   image: string
   technologies: string[]
   demoVideoUrl?: string
   githubUrl?: string
-  category: 'game' | 'fullstack' |'design' | 'ai'
+  categories: Category[]
 }
 
 const projects: Project[] = [
@@ -21,18 +22,21 @@ const projects: Project[] = [
     image: '✈️',
     technologies: ['Vue.js', 'Node.js', 'SQL', 'HTML', 'CSS'],
     demoVideoUrl: 'https://youtu.be/l7jV_-d9rIs', 
-    githubUrl: '#',    
-    category: 'fullstack'
+    githubUrl: 'https://github.com/monqboi/flight-web-app',    
+    categories: ['fullstack']
   },
   {
     id: 2,
     title: 'Mobile Store POS System',
-    description: 'A point-of-sale system for mobile phone stores, featuring product management, transactions, and reporting.',
+    description: (<>
+      A point-of-sale system for mobile phone stores, featuring product management, transactions, and reporting.{' '}
+      <strong>For demo Username: testuser Password: test1234</strong>
+    </>),
     image: '📱',
     technologies: ['Next.js', 'Prisma', 'MongoDB', 'Node.js', 'Express', 'Tailwind CSS'],
-    demoVideoUrl: '#',
-    githubUrl: '#',
-    category: 'fullstack'
+    demoVideoUrl: 'https://mobile-store-frontend-two.vercel.app/',
+    githubUrl: 'https://github.com/bbbbyw/MobileStore',
+    categories: ['fullstack']
   },
   {
     id: 3,
@@ -40,9 +44,9 @@ const projects: Project[] = [
     description: 'A 2D Unity game that uses AI-based pose tracking to encourage kids to exercise through interactive challenges.',
     image: '🎮',
     technologies: ['Unity', 'C#', 'MediaPipe Pose', 'AI Tracking'],
-    demoVideoUrl: '#',
-    githubUrl: '#',
-    category: 'game'
+    demoVideoUrl: 'https://youtu.be/h4XdQg9gG04',
+    githubUrl: 'https://github.com/bbbbyw/TaFightWorld_NewHealthNearMe',
+    categories: ['game', 'ai']
   },
   {
     id: 4,
@@ -51,8 +55,8 @@ const projects: Project[] = [
     image: '🌐',
     technologies: ['Next.js', 'Tailwind CSS', 'AWS S3'],
     demoVideoUrl: '',
-    githubUrl: '#',
-    category: 'fullstack'
+    githubUrl: 'https://github.com/bbbbyw/myPortfolio',
+    categories: ['fullstack']
   },
   {
     id: 5,
@@ -60,19 +64,19 @@ const projects: Project[] = [
     description: 'Designed a gamified UX/UI concept that promotes engagement and interactivity, awarded Runner-up.',
     image: '🏆',
     technologies: ['UX/UI Design', 'Figma'],
-    demoVideoUrl: '#',
+    demoVideoUrl: 'https://www.figma.com/proto/UFGH14Bjb5hnivjkIcwjJX/The-new-MUx-mock-up?page-id=0%3A1&node-id=238-6390&p=f&viewport=598%2C315%2C0.03&t=kxtK1v1ipwfVMJ5Y-1&scaling=min-zoom&content-scaling=fixed&starting-point-node-id=238%3A6390&show-proto-sidebar=1',
     githubUrl: '',
-    category: 'design'
+    categories: ['design']
   }
 ]
 
 
 export default function Projects() {
-  const [activeCategory, setActiveCategory] = useState<'all' | 'game' | 'fullstack' |'design' | 'ai'>('all')
+  const [activeCategory, setActiveCategory] = useState<'all' | Category>('all')
 
   const filteredProjects = activeCategory === 'all' 
     ? projects 
-    : projects.filter(project => project.category === activeCategory)
+    : projects.filter(project => project.categories.includes(activeCategory))
 
   return (
     <section id="projects" className="py-20 bg-white relative">
@@ -102,7 +106,7 @@ export default function Projects() {
             ].map((filter) => (
                               <button
                   key={filter.key}
-                  onClick={() => setActiveCategory(filter.key as any)}
+                  onClick={() => setActiveCategory(filter.key as 'all' | Category)}
                   suppressHydrationWarning
                   className={`px-6 py-2 rounded-full font-medium transition-all duration-300 ${
                     activeCategory === filter.key
@@ -175,7 +179,7 @@ export default function Projects() {
             Want to see more of my work? Check out my GitHub for additional projects and contributions.
           </p>
           <a
-            href="#"
+            href="https://github.com/bbbbyw"
             className="inline-flex items-center px-8 py-3 bg-yellow-500 text-white font-semibold rounded-lg transition-all duration-300 transform hover:scale-105"
           >
             View All Projects
@@ -188,3 +192,5 @@ export default function Projects() {
     </section>
   )
 } 
+
+type Category = 'game' | 'fullstack' | 'design' | 'ai' 
