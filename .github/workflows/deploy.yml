@@ -62,7 +62,6 @@ jobs:
             --include "**/*.html"
 
       - name: Invalidate CloudFront
-        if: ${{ success() && secrets.CF_DISTRIBUTION_ID != '' }}
         env:
           CF_DISTRIBUTION_ID: ${{ secrets.CF_DISTRIBUTION_ID }}
         run: aws cloudfront create-invalidation --distribution-id $CF_DISTRIBUTION_ID --paths "/*" 
