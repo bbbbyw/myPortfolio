@@ -1,36 +1,105 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+### Portfolio — Cloud & DevOps Enthusiast (Next.js + Tailwind)
 
-## Getting Started
+Modern, responsive personal portfolio built with Next.js and Tailwind CSS. Designed to showcase projects, skills, and personality with smooth interactions and clean visual design.
 
-First, run the development server:
+— Built by Boonyawee: Computer Engineering student and aspiring Cloud/DevOps engineer.
+
+## Demo
+
+- Live site: https://d3cjdq9tq2wsde.cloudfront.net/
+
+## Screenshots
+
+![Website](./public/demo1.png)
+![About me](./public/demo2.png)
+![Skills](./public/demo3.png)
+![Projects](./public/demo4.png)
+![Contact](./public/demo5.png)
+
+## Key Features
+
+- **Polished hero section** with rotating role tagline and subtle animations
+- **Smooth in-page navigation** (Projects, Contact) with accessible focus states
+- **Responsive** from mobile to desktop, optimized typography and spacing
+- **Email-ready contact** section (EmailJS setup included)
+- **Static export** compatible for CDN hosting (S3/CloudFront, GitHub Pages, etc.)
+
+## Tech Stack
+
+![TypeScript](https://img.shields.io/badge/TypeScript-5-3178C6?logo=typescript&logoColor=fff)
+![Next.js](https://img.shields.io/badge/Next.js-14-000?logo=next.js&logoColor=fff)
+![React](https://img.shields.io/badge/React-18-61DAFB?logo=react&logoColor=000)
+![TailwindCSS](https://img.shields.io/badge/TailwindCSS-3-38B2AC?logo=tailwindcss&logoColor=fff)
+![EmailJS](https://img.shields.io/badge/EmailJS-ready-4B9AE5)
+
+### AWS Services Used
+
+- Amazon S3 (static asset hosting)
+- Amazon CloudFront (global CDN + OAC to S3 origin)
+- AWS IAM (least-privilege deploy role, scoped to S3 + CloudFront invalidation)
+
+## AWS Architecture (Static Hosting)
+
+- Build: `next build && next export` → generates static assets in `out/`
+- Storage: **Amazon S3** bucket for hosting static site (private bucket is recommended)
+- CDN: **Amazon CloudFront** in front of S3 with Origin Access Control (OAC)
+
+## Quickstart
 
 ```bash
+# Install
+npm install
+
+# Run dev server
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+
+# Production build
+npm run build
+npm start  # or: npm run preview if using a static host after export
+
+# Optional: export static site
+npm run build && npx next export
+# Output will be in the out/ directory
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open `http://localhost:3000` to view.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Project Structure
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```
+src/
+  app/
+    layout.tsx        # Root layout, global metadata
+    page.tsx          # Homepage composition
+    globals.css       # Tailwind base styles
+  components/
+    Hero.tsx          # Rotating text, smooth scroll actions
+    About.tsx         # Bio and value proposition
+    Projects.tsx      # Projects showcase
+    Skills.tsx        # Tech stack and proficiencies
+    Contact.tsx       # Contact form / links 
+    Navbar.tsx        # Top navigation
+    Footer.tsx        # Footer and social links
+public/               # Images and static assets
+```
 
-## Learn More
+## Deployment
 
-To learn more about Next.js, take a look at the following resources:
+- **Static hosting (S3/CloudFront, GitHub Pages)**: `next build && next export`, upload `out/`
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## CI/CD Pipeline (GitHub Actions → S3/CloudFront)
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Automated build and deploy on push to `main`.
 
-## Deploy on Vercel
+### What it does
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+1. Check out code and set up Node.js
+2. Install dependencies and build Next.js
+3. Export static site to `out/`
+4. Sync `out/` to S3 (delete removed files)
+5. Invalidate CloudFront cache for immediate updates
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Contact
+
+- LinkedIn: https://www.linkedin.com/in/byw-%E0%B8%A7%E0%B8%AA%E0%B8%B8%E0%B8%9E%E0%B8%A3%E0%B8%A3%E0%B8%B8%E0%B8%88%E0%B8%B5-464998369/
+- Email: yok.byw@gmail.com
