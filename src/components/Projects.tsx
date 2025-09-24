@@ -17,13 +17,13 @@ interface Project {
 const projects: Project[] = [
   {
     id: 1,
-    title: 'Flight Reservation Website',
-    description: 'A web-based flight booking system with database integration for managing reservations and users.',
-    image: '✈️',
-    technologies: ['Vue.js', 'Node.js', 'SQL', 'HTML', 'CSS'],
-    demoVideoUrl: 'https://youtu.be/l7jV_-d9rIs', 
-    githubUrl: 'https://github.com/monqboi/flight-web-app',    
-    categories: ['fullstack']
+    title: 'Feelink — Emotion analysis chatbot website',
+    description: 'Website that detects emotion from short text and suggests uplifting activities and encourage messages. Next.js frontend, serverless AWS backend, cost‑aware and scalable.',
+    image: '🗨️',
+    technologies: ['Next.js', 'Tailwind CSS', 'JavaScript','AWS Lambda', 'API Gateway', 'DynamoDB', 'S3', 'CloudFront', 'CloudWatch', 'SNS', 'SAM', 'IAM', 'GitHub Actions'],
+    demoVideoUrl: 'https://youtu.be/23GhbIo-kBs',
+    githubUrl: 'https://github.com/bbbbyw/Feelink',
+    categories: ['fullstack', 'ai']
   },
   {
     id: 2,
@@ -53,7 +53,7 @@ const projects: Project[] = [
     title: 'Portfolio Website (This site)',
     description: 'A modern and responsive portfolio website showcasing my work, hosted on AWS S3 + CloudFront with Tailwind styling and CI/CD pipeline by AWS IAM and GitHub action.',
     image: '🌐',
-    technologies: ['Next.js', 'Tailwind CSS', 'AWS S3'],
+    technologies: ['Next.js', 'Tailwind CSS', 'AWS S3', 'AWS CloudFront', 'AWS IAM', 'GitHub Actions'],
     demoVideoUrl: '',
     githubUrl: 'https://github.com/bbbbyw/myPortfolio',
     categories: ['fullstack']
@@ -67,6 +67,16 @@ const projects: Project[] = [
     demoVideoUrl: 'https://www.figma.com/proto/UFGH14Bjb5hnivjkIcwjJX/The-new-MUx-mock-up?page-id=0%3A1&node-id=238-6390&p=f&viewport=598%2C315%2C0.03&t=kxtK1v1ipwfVMJ5Y-1&scaling=min-zoom&content-scaling=fixed&starting-point-node-id=238%3A6390&show-proto-sidebar=1',
     githubUrl: '',
     categories: ['design']
+  },
+  {
+    id: 6,
+    title: 'Flight Reservation Website',
+    description: 'A web-based flight booking system with database integration for managing reservations and users.',
+    image: '✈️',
+    technologies: ['Vue.js', 'Node.js', 'SQL', 'HTML', 'CSS'],
+    demoVideoUrl: 'https://youtu.be/l7jV_-d9rIs', 
+    githubUrl: 'https://github.com/monqboi/flight-web-app',    
+    categories: ['fullstack']
   }
 ]
 
