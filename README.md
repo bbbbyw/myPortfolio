@@ -19,7 +19,6 @@ Modern, responsive personal portfolio built with Next.js and Tailwind CSS. Desig
 ## Key Features
 
 - **Polished hero section** with rotating role tagline and subtle animations
-- **Smooth in-page navigation** (Projects, Contact) with accessible focus states
 - **Responsive** from mobile to desktop, optimized typography and spacing
 - **Email-ready contact** section (EmailJS setup included)
 - **Static export** compatible for CDN hosting (S3/CloudFront, GitHub Pages, etc.)
