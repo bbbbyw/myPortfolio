@@ -23,7 +23,7 @@ const projects: Project[] = [
     technologies: ['Next.js', 'Tailwind CSS', 'JavaScript','AWS Lambda', 'API Gateway', 'DynamoDB', 'S3', 'CloudFront', 'CloudWatch', 'SNS', 'SAM', 'IAM', 'GitHub Actions'],
     demoVideoUrl: 'https://youtu.be/23GhbIo-kBs',
     githubUrl: 'https://github.com/bbbbyw/Feelink',
-    categories: ['fullstack', 'ai']
+    categories: ['fullstack', 'cloud/devops']
   },
   {
     id: 2,
@@ -46,7 +46,7 @@ const projects: Project[] = [
     technologies: ['Unity', 'C#', 'MediaPipe Pose', 'AI Tracking'],
     demoVideoUrl: 'https://youtu.be/h4XdQg9gG04',
     githubUrl: 'https://github.com/bbbbyw/TaFightWorld_NewHealthNearMe',
-    categories: ['game', 'ai']
+    categories: ['game']
   },
   {
     id: 4,
@@ -56,7 +56,7 @@ const projects: Project[] = [
     technologies: ['Next.js', 'Tailwind CSS', 'AWS S3', 'AWS CloudFront', 'AWS IAM', 'GitHub Actions'],
     demoVideoUrl: '',
     githubUrl: 'https://github.com/bbbbyw/myPortfolio',
-    categories: ['fullstack']
+    categories: ['fullstack', 'cloud/devops']
   },
   {
     id: 5,
@@ -77,21 +77,41 @@ const projects: Project[] = [
     demoVideoUrl: 'https://youtu.be/l7jV_-d9rIs', 
     githubUrl: 'https://github.com/monqboi/flight-web-app',    
     categories: ['fullstack']
+  },
+  {
+    id: 7,
+    title: 'Security Log Monitoring System (GCP)',
+    description: 'Cloud-native security monitoring system that ingests logs, detects brute-force attacks, and sends real-time alerts via email. Built with fully managed GCP services for zero infrastructure management.',
+    image: '🔒',
+    technologies: ['Google Cloud Run', 'Pub/Sub', 'Cloud Functions', 'BigQuery', 'Cloud Scheduler', 'Node.js', 'Express', 'Python', 'Gmail SMTP'],
+    githubUrl: 'https://github.com/bbbbyw/SecurityLogMonitoringSystem',
+    categories: ['cloud/devops']
   }
 ]
 
 
 export default function Projects() {
   const [activeCategory, setActiveCategory] = useState<'all' | Category>('all')
+  const [expandedTech, setExpandedTech] = useState<Set<number>>(new Set())
 
   const filteredProjects = activeCategory === 'all' 
     ? projects 
     : projects.filter(project => project.categories.includes(activeCategory))
 
+  const toggleTechExpansion = (projectId: number) => {
+    const newExpanded = new Set(expandedTech)
+    if (newExpanded.has(projectId)) {
+      newExpanded.delete(projectId)
+    } else {
+      newExpanded.add(projectId)
+    }
+    setExpandedTech(newExpanded)
+  }
+
   return (
     <section id="projects" className="py-20 bg-white relative">
       <div 
-        className="absolute inset-0 opacity-50 bg-cover bg-center bg-no-repeat"
+        className="absolute inset-0 opacity-15 bg-contain bg-center bg-no-repeat -z-7"
         style={{
           backgroundImage: "url('/bg-project.png')"
         }}
@@ -112,13 +132,13 @@ export default function Projects() {
               { key: 'game', label: 'Games' },
               { key: 'fullstack', label: 'Full Stack' },
               { key: 'design', label: 'UX/UI design' },
-              { key: 'ai', label: 'AI' },
+              { key: 'cloud/devops', label: 'Cloud/DevOps' },
             ].map((filter) => (
                               <button
                   key={filter.key}
                   onClick={() => setActiveCategory(filter.key as 'all' | Category)}
                   suppressHydrationWarning
-                  className={`px-6 py-2 rounded-full font-medium transition-all duration-300 ${
+                  className={`px-6 py-2 rounded-full font-medium transition-colors duration-200 ${
                     activeCategory === filter.key
                       ? 'bg-gradient-to-r from-yellow-500 to-orange-500 text-white'
                       : 'bg-white/10 text-gray-500 hover:bg-black/20'
@@ -135,24 +155,37 @@ export default function Projects() {
           {filteredProjects.map((project) => (
             <div
               key={project.id}
-              className="group bg-gradient-to-br from-blue-600/20 to-cyan-400/20 border border-blue-500/20 hover:border-blue-400/40 rounded-xl overflow-hidden backdrop-blur-sm hover:bg-white/10 transition-all duration-300 transform hover:scale-105"
+              className="group bg-gradient-to-br from-blue-600/30 to-cyan-400/30 border border-blue-500/20 hover:border-blue-400/40 rounded-xl overflow-hidden hover:bg-white/10 transition-colors duration-200 will-change-transform"
             >
               <div className="p-6">
                 <div className="text-4xl mb-4">{project.image}</div>
                 <h3 className="text-xl font-bold text-black mb-3">{project.title}</h3>
-                <p className="text-gray-400 text-sm mb-4 leading-relaxed">
+                <p className="text-gray-600 text-sm mb-4 leading-relaxed">
                   {project.description}
                 </p>
                 
-                <div className="flex flex-wrap gap-2 mb-6">
-                  {project.technologies.map((tech) => (
-                    <span
-                      key={tech}
-                      className="px-3 py-1 bg-cyan-500 text-white text-xs rounded-full"
-                    >
-                      {tech}
-                    </span>
-                  ))}
+                <div className="mb-6">
+                  <div className="flex flex-wrap gap-2">
+                    {(expandedTech.has(project.id) 
+                      ? project.technologies 
+                      : project.technologies.slice(0, 4)
+                    ).map((tech) => (
+                      <span
+                        key={tech}
+                        className="px-3 py-1 bg-cyan-500 text-white text-xs rounded-full"
+                      >
+                        {tech}
+                      </span>
+                    ))}
+                    {project.technologies.length > 4 && (
+                      <button
+                        onClick={() => toggleTechExpansion(project.id)}
+                        className="px-3 py-1 bg-gray-500 hover:bg-gray-600 text-white text-xs rounded-full transition-colors duration-200"
+                      >
+                        {expandedTech.has(project.id) ? 'Show Less' : `+${project.technologies.length - 4} More`}
+                      </button>
+                    )}
+                  </div>
                 </div>
                 
                 <div className="flex gap-4">
@@ -161,7 +194,7 @@ export default function Projects() {
                       href={project.demoVideoUrl}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="flex-1 border border-black/30 text-gray-500 text-center py-2 px-4 rounded-lg font-medium hover:bg-yellow-500 hover:border-yellow-500 hover:text-white transition-all duration-300"
+                      className="flex-1 border border-black/30 text-gray-500 text-center py-2 px-4 rounded-lg font-medium hover:bg-yellow-500 hover:border-yellow-500 hover:text-white transition-colors duration-200"
                     >
                       <a className='mr-2 fa-solid fa-play'></a>
                       Demo
@@ -172,7 +205,7 @@ export default function Projects() {
                       href={project.githubUrl}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="flex-1 border border-black/30 text-gray-500 text-center py-2 px-4 rounded-lg font-medium hover:bg-yellow-500 hover:border-yellow-500 hover:text-white transition-all duration-300"
+                      className="flex-1 border border-black/30 text-gray-500 text-center py-2 px-4 rounded-lg font-medium hover:bg-yellow-500 hover:border-yellow-500 hover:text-white transition-colors duration-200"
                     >
                       <a className='mr-2 fa-brands fa-github'></a>
                       GitHub
@@ -190,7 +223,7 @@ export default function Projects() {
           </p>
           <a
             href="https://github.com/bbbbyw"
-            className="inline-flex items-center px-8 py-3 bg-yellow-500 text-white font-semibold rounded-lg transition-all duration-300 transform hover:scale-105"
+            className="inline-flex items-center px-8 py-3 bg-yellow-500 text-white font-semibold rounded-lg transition-colors duration-200 hover:bg-yellow-600"
           >
             View All Projects
             <svg className="ml-2 w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -203,4 +236,4 @@ export default function Projects() {
   )
 } 
 
-type Category = 'game' | 'fullstack' | 'design' | 'ai' 
+type Category = 'game' | 'fullstack' | 'design' | 'cloud/devops' 

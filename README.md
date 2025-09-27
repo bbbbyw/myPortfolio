@@ -101,5 +101,5 @@ Automated build and deploy on push to `main`.
 
 ## Contact
 
-- LinkedIn: https://www.linkedin.com/in/byw-%E0%B8%A7%E0%B8%AA%E0%B8%B8%E0%B8%9E%E0%B8%A3%E0%B8%A3%E0%B8%B8%E0%B8%88%E0%B8%B5-464998369/
+- LinkedIn: https://www.linkedin.com/in/boonyawee-wasupornrujee-464998369/
 - Email: yok.byw@gmail.com

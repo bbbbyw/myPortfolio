@@ -17,20 +17,16 @@ export default function About() {
           <div className="w-24 h-1 bg-gradient-to-r from-yellow-400 to-orange-400 mx-auto"></div>
         </div>
         
-        <div className="grid lg:grid-rows-2 gap-2 items-center mx-40">
+        <div className="grid lg:grid-rows-2 gap-2 items-center mx-4 sm:mx-8 md:mx-16 lg:mx-24 xl:mx-40">
           <div className="space-y-6">
-            <p className="text-lg text-black leading-relaxed">
-            I am a Computer Engineering student at King Mongkut's University of Technology Thonburi, 
-            building a strong foundation for a career as a Cloud and DevOps Engineer.
-             My technical journey spans from low-level C/C++ to modern full-stack development with JavaScript, React, Next.js, and Node.js. 
-             This is complemented by a proven skill in UI/UX design, 
-            evidenced by my team's 2nd place win at the MU Gamification Hackathon.
-            </p>
-            
-            <p className="text-lg text-black leading-relaxed">  
-            I am a proactive builder and problem-solver, passionate about creating impactful software. My projects reflect this diversity, ranging from practical database systems and a POS for a mobile shop to an AI-powered Unity game.
-            I'm eager to contribute my skills in problem-solving, creativity, and infrastructure automation to a challenging new role.
-            </p>
+          <p className="text-lg text-black leading-relaxed">
+          Computer Engineering student at KMUTT with expertise spanning C/C++ to modern full-stack development (JavaScript, TypeScript, Next.js, Node.js). Hands-on experience with 
+          both AWS and GCP cloud platforms, building serverless applications and implementing CI/CD pipelines.
+          </p>
+
+          <p className="text-lg text-black leading-relaxed">  
+          Collaborative problem-solver with proven results under pressure, demonstrated by earning runner-up at MU Gamification Hackathon. I combine analytical thinking with adaptability to quickly learn technologies and tackle diverse challenges. Eager to contribute strong communication skills and commitment to quality in Cloud/DevOps engineering roles.
+          </p>
           </div>
           
           <div className="relative">
@@ -60,7 +56,7 @@ export default function About() {
                   <span className="text-pink-700 text-xl">🚀</span>
                 </div>
                 <h4 className="text-gray-600 font-semibold mb-3 text-lg">Cloud & DevOps</h4>
-                <p className="text-gray-400 text-sm leading-relaxed">Exploring AWS services and learning automation with CI/CD, Docker, and Infrastructure-as-Code.</p>
+                <p className="text-gray-400 text-sm leading-relaxed">Designing and deploying scalable cloud solutions on AWS and GCP platforms and implementing CI/CD pipelines.</p>
               </div>
             </div>
           </div>

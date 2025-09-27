@@ -57,7 +57,7 @@ export default function Hero() {
           </p>
 
           <p className="text-sm sm:text-base text-gray-600 mb-4 max-w-xl mx-auto">
-             Building full-stack applications and intelligent systems with modern tools. Award-winning designer and passionate problem solver.
+          Building innovative solutions through technology and creative problem solving. Computer Engineering student with a passion for modern development practices and collaborative teamwork.
           </p>
           
           <div className="flex flex-col sm:flex-row gap-3 justify-center mb-2">

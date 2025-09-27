@@ -8,14 +8,16 @@ interface Skill {
 }
 
 const skills: Skill[] = [
-  { name: 'C / C++', level: 90 },
+  { name: 'C/C++', level: 80 },
+  { name: 'JavaScript/TypeScript', level: 70 },
   { name: 'Next.js', level: 75 },
-  { name: 'Node.js', level: 70 },
-  { name: 'TypeScript / JavaScript', level: 70 },
-  { name: 'Database (SQL / MongoDB / Prisma)',  level: 80 },
-  { name: 'AWS Cloud', level: 65 },
-  { name: 'Unity (C#)', level: 70 },
-  { name: 'Python', level: 70 }
+  { name: 'Node.js', level: 60 },
+  { name: 'Python', level: 70 },
+  { name: 'AWS Cloud Services', level: 55 },
+  { name: 'GCP Cloud Services', level: 40 },
+  { name: 'Database (MongoDB, Prisma ORM, SQL)', level: 60 },
+  { name: 'DevOps & CI/CD (Git, GitHub Actions, SAM, RESTful APIs)', level: 45 },
+  { name: 'Unity/C#', level: 60 }
 ]
 
 // Add function to get skill level text
@@ -23,8 +25,10 @@ const getSkillLevelText = (level: number): string => {
   if (level >= 90) return 'Expert'
   if (level >= 80) return 'Advanced'
   if (level >= 70) return 'Intermediate'
-  if (level >= 50) return 'Beginner'
-  return 'Novice'
+  if (level >= 60) return 'Proficient'
+  if (level >= 50) return 'Familiar'
+  if (level >= 40) return 'Beginner'
+  return 'Learning'
 }
 
 export default function Skills() {
@@ -101,7 +105,7 @@ export default function Skills() {
                 ].map((skill) => (
                   <div
                     key={skill.name}
-                    className="p-4 bg-gray-200 rounded-lg hover:bg-gray-100 transition-all duration-300 transform hover:scale-105"
+                    className="p-4 bg-gray-200 rounded-lg hover:bg-gray-100 transition-colors duration-200"
                   >
                     <div className="flex items-center space-x-3">
                       <span className="text-2xl">{skill.icon}</span>
@@ -127,7 +131,7 @@ export default function Skills() {
 
         <div className="flex justify-center mt-12">
           <a
-            href="YOUR_GOOGLE_DRIVE_LINK_HERE"
+            href="https://drive.google.com/file/d/1lY0SJScfQRNTv39lIFrMLD4IsRi3XDV9/view?usp=sharing"
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center px-8 py-3 bg-yellow-500 text-white font-semibold rounded-lg transition-all duration-300 transform hover:scale-105"
