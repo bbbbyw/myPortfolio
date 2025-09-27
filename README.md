@@ -2,8 +2,6 @@
 
 Modern, responsive personal portfolio built with Next.js and Tailwind CSS. Designed to showcase projects, skills, and personality with smooth interactions and clean visual design.
 
-— Built by Boonyawee: Computer Engineering student and aspiring Cloud/DevOps engineer.
-
 ## Demo
 
 - Live site: https://d3cjdq9tq2wsde.cloudfront.net/
