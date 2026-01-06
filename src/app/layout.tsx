@@ -8,8 +8,8 @@ const inter = Inter({ subsets: ["latin"] });
 export const metadata: Metadata = {
   title: "Boonyawee Wasupornrujee's Portfolio",
   description: "Professional portfolio showcasing projects, skills, and experience.",
-  keywords: ["portfolio", "software developer", "full stack", "react", "next.js", "typescript"],
-  authors: [{ name: "Your Name" }],
+  keywords: ["portfolio", "software developer", "full stack", "react", "next.js", "cloud", "devops"],
+  authors: [{ name: "Boonyawee Wasupornrujee" }],
 };
 
 export const viewport: Viewport = {
