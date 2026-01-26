@@ -109,8 +109,8 @@ const projects: Project[] = [
       'Supertest',
       'GitHub Actions'
     ],
-    demoVideoUrl: 'https://your-expense-tracker-demo-link',
-    githubUrl: 'https://github.com/<your-username>/ExpenseTracker',
+    demoVideoUrl: 'https://youtu.be/VgVtuHzXFb8',
+    githubUrl: 'https://github.com/bbbbyw/ExpenseTracker',
     categories: ['fullstack', 'cloud/devops']
   }
 ]
