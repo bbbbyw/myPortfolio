@@ -86,6 +86,32 @@ const projects: Project[] = [
     technologies: ['Google Cloud Run', 'Pub/Sub', 'Cloud Functions', 'BigQuery', 'Cloud Scheduler', 'Node.js', 'Express', 'Python', 'Gmail SMTP'],
     githubUrl: 'https://github.com/bbbbyw/SecurityLogMonitoringSystem',
     categories: ['cloud/devops']
+  },
+  {
+    id: 8,
+    title: 'Expense Tracker — Production-Style Microservices Finance App',
+    description: 'Production-style microservices expense tracking platform with real-time reporting, budgets, CSV exports, and full observability on Kubernetes.',
+    image: '💸',
+    technologies: [
+      'Node.js',
+      'Express',
+      'PostgreSQL',
+      'Redis',
+      'RabbitMQ',
+      'Next.js',
+      'TypeScript',
+      'Docker',
+      'Kubernetes',
+      'Prometheus',
+      'Grafana',
+      'NGINX',
+      'Jest',
+      'Supertest',
+      'GitHub Actions'
+    ],
+    demoVideoUrl: 'https://your-expense-tracker-demo-link',
+    githubUrl: 'https://github.com/<your-username>/ExpenseTracker',
+    categories: ['fullstack', 'cloud/devops']
   }
 ]
 

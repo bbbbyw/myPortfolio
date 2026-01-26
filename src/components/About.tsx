@@ -1,4 +1,29 @@
+'use client'
+
+import { useEffect, useState } from 'react'
+
+type LightboxImage = { src: string; alt: string } | null
+
 export default function About() {
+  const [lightbox, setLightbox] = useState<LightboxImage>(null)
+
+  useEffect(() => {
+    if (!lightbox) return
+
+    const onKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') setLightbox(null)
+    }
+
+    document.addEventListener('keydown', onKeyDown)
+    const prevOverflow = document.body.style.overflow
+    document.body.style.overflow = 'hidden'
+
+    return () => {
+      document.removeEventListener('keydown', onKeyDown)
+      document.body.style.overflow = prevOverflow
+    }
+  }, [lightbox])
+
   return (
     <section id="about" className="py-20 bg-white relative">
       {/* Background image with all decorations */}
@@ -17,8 +42,8 @@ export default function About() {
           <div className="w-24 h-1 bg-gradient-to-r from-yellow-400 to-orange-400 mx-auto"></div>
         </div>
         
-        <div className="grid lg:grid-rows-2 gap-2 items-center mx-4 sm:mx-8 md:mx-16 lg:mx-24 xl:mx-40">
-          <div className="space-y-6">
+        <div className="grid lg:grid-rows-2 gap-2 items-center justify-items-center max-w-5xl mx-max-content">
+          <div className="space-y-6 max-w-3xl mx-auto text-center">
           <p className="text-lg text-black leading-relaxed">
           Computer Engineering student at KMUTT with expertise spanning C/C++ to modern full-stack development (JavaScript, TypeScript, Next.js, Node.js). Hands-on experience with 
           both AWS and GCP cloud platforms, building serverless applications and implementing CI/CD pipelines.
@@ -69,11 +94,18 @@ export default function About() {
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-[max-content,max-content,max-content] gap-6 justify-center ">
               <div className="w-[320px] sm:w-[360px] bg-gradient-to-br from-yellow-400/20 to-orange-400/20 p-6 rounded-2xl border border-yellow-500/20 hover:border-yellow-400/40 transition-all duration-300 hover:scale-105">
                 <div className="w-full h-40 rounded-xl overflow-hidden mb-4 border border-yellow-500/30">
-                  <img
-                    src="/mu-pic.jpg"
-                    alt="MU Gamification Hackathon Award"
-                    className="w-full h-full object-cover"
-                  />
+                  <button
+                    type="button"
+                    onClick={() => setLightbox({ src: '/mu-pic.jpg', alt: 'MU Gamification Hackathon Award' })}
+                    className="w-full h-full"
+                    aria-label="Zoom MU Gamification Hackathon Award image"
+                  >
+                    <img
+                      src="/mu-pic.jpg"
+                      alt="MU Gamification Hackathon Award"
+                      className="w-full h-full object-cover cursor-zoom-in"
+                    />
+                  </button>
                 </div>
                 <h4 className="text-gray-700 font-semibold mb-3 text-lg">2nd Place, MU Gamification Hackathon</h4>
                 <p className="text-gray-400 text-sm leading-relaxed">Awarded for excellence in UX/UI design and innovative gamification concepts in a team-based competition.</p>
@@ -81,14 +113,40 @@ export default function About() {
               
               <div className="w-[320px] sm:w-[360px] bg-gradient-to-br from-blue-400/20 to-indigo-500/20 p-6 rounded-2xl border border-blue-500/20 hover:border-blue-400/40 transition-all duration-300 hover:scale-105">
                 <div className="w-full h-40 rounded-xl overflow-hidden mb-4 border border-blue-500/30">
-                  <img
-                    src="/activity_cer.jpg"
-                    alt="Outstanding Activities Award"
-                    className="w-full h-full object-contain "
-                  />
+                  <button
+                    type="button"
+                    onClick={() => setLightbox({ src: '/activity_cer.jpg', alt: 'Outstanding Activities Award' })}
+                    className="w-full h-full"
+                    aria-label="Zoom Outstanding Activities Award image"
+                  >
+                    <img
+                      src="/activity_cer.jpg"
+                      alt="Outstanding Activities Award"
+                      className="w-full h-full object-contain cursor-zoom-in"
+                    />
+                  </button>
                 </div>
                 <h4 className="text-gray-700 font-semibold mb-3 text-lg">Outstanding Activities Award</h4>
                 <p className="text-gray-400 text-sm leading-relaxed">Recognized by the university for exceptional extracurricular contributions that bring fame to the faculty.</p>
+              </div>
+
+              <div className="w-[320px] sm:w-[360px] bg-gradient-to-br from-emerald-400/20 to-teal-500/20 p-6 rounded-2xl border border-emerald-500/20 hover:border-emerald-400/40 transition-all duration-300 hover:scale-105">
+                <div className="w-full h-40 rounded-xl overflow-hidden mb-4 border border-emerald-500/30">
+                  <button
+                    type="button"
+                    onClick={() => setLightbox({ src: '/Toeic.jpg', alt: 'TOEIC Official Score Report' })}
+                    className="w-full h-full"
+                    aria-label="Zoom TOEIC Official Score Report image"
+                  >
+                    <img
+                      src="/Toeic.jpg"
+                      alt="TOEIC Official Score Report"
+                      className="w-full h-full object-cover cursor-zoom-in"
+                    />
+                  </button>
+                </div>
+                <h4 className="text-gray-700 font-semibold mb-3 text-lg">TOEIC Score 930</h4>
+                <p className="text-gray-400 text-sm leading-relaxed">Official Listening and Reading test score report.</p>
               </div>
               
               
@@ -96,6 +154,33 @@ export default function About() {
           </div>
         </div>
       </div>
+
+      {lightbox && (
+        <div
+          className="fixed inset-0 z-50 bg-black/80 flex items-center justify-center p-4"
+          role="dialog"
+          aria-modal="true"
+          onClick={() => setLightbox(null)}
+        >
+          <div
+            className="relative w-full max-w-5xl"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <button
+              type="button"
+              className="absolute -top-12 right-0 text-white/90 hover:text-white text-sm px-3 py-2 rounded-lg bg-white/10 hover:bg-white/20 transition-colors"
+              onClick={() => setLightbox(null)}
+            >
+              Close (Esc)
+            </button>
+            <img
+              src={lightbox.src}
+              alt={lightbox.alt}
+              className="w-full max-h-[85vh] object-contain rounded-xl border border-white/20 bg-white/5"
+            />
+          </div>
+        </div>
+      )}
     </section>
   )
 } 
